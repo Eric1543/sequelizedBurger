@@ -1,4 +1,4 @@
-CREATE DATABASE burgers_db;
+CREATE DATABASE sequelizeBurgers_db;
 
 USE burgers_db;
 

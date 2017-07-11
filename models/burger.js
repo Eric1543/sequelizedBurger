@@ -1,22 +1,19 @@
-var orm = require("../config/orm.js");
+var Sequelize = require('sequelize');
 
-var burger = {
-	all: function(cb){
-		orm.selectAll("burgers", function(res){
-			cb(res);
-		});
+var sequelize = require('../config/connection.js');
+
+var Burger = sequelize.define("burger", {
+	burger_name: {
+		type: Sequelize.STRING
 	},
-	create: function(cols, vals, cb){
-		orm.insertOne("burgers", cols, vals, function(res){
-			cb(res);
-		});
-	},
-	update: function(objColVals, condition, cb){
-		orm.updateOne("burgers", objColVals, condition, function(res){
-			cb(res);
-		});
+	devoured: {
+		type: Sequelize.BOOLEAN,
+		defaultValue: false
 	}
-};
+}, {
+	timestamps: false
+});
 
-// Export the database functions for the controller (burgers_Controller.js).
-module.exports = burger;
+Burger.sync();
+
+module.exports = Burger;

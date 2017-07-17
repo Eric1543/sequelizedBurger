@@ -2,27 +2,19 @@
 <h1>EAT-DA-BURGER</h1>
 
 <h3 style="float:left; margin-top:0px">Available Burgers</h3>
-
 <ul style="clear:left">
   {{#each burgers}}
   	{{#unless devoured}}
 	  	<li>
 	       <p>Burger {{this.id}}: {{this.burger_name}} &nbsp;
 	       		<form action="/{{this.id}}" method="POST">
-	       			<button id="{{this.id}}">Click to Eat</button>
+	       			<button id="{{this.id}}" style="color:#000">Click to Eat</button>
 	       		</form>
 	       </p>
 	  	</li>
   	{{/unless}}
   {{/each}}
 </ul>
-
-<h3>Add a Burger</h3>
-<form action="/" method="POST" style="padding-left:20px">
-	<textarea type="text" name="burger_name" style="color:#000"></textarea>
-
-	<button type="submit">Submit</button>
-</form>
 
 <h3>Eaten Burgers</h3>
   {{#each burgers}}
@@ -35,5 +27,12 @@
 	  	</ul>
   	{{/if}}
   {{/each}}
+
+<h3>Add a Burger</h3>
+<form action="/" method="POST" style="padding-left:20px">
+	<textarea type="text" name="burger_name" style="color:#000"></textarea>
+
+	<button type="submit">Submit</button>
+</form>
 
 </body>

@@ -1,19 +1,20 @@
-var Sequelize = require('sequelize');
-
-var sequelize = require('../config/connection.js');
-
-var Burger = sequelize.define("burger", {
-	burger_name: {
-		type: Sequelize.STRING
-	},
-	devoured: {
-		type: Sequelize.BOOLEAN,
-		defaultValue: false
-	}
-}, {
-	timestamps: false
-});
-
-Burger.sync();
-
-module.exports = Burger;
+module.exports = function(sequelize, DataTypes) {
+  var Burger = sequelize.define("Burger", {
+    burger_name: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    devoured: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: false
+    },
+    date: {
+    	type: DataTypes.DATE,
+    	allowNull: false
+    }
+  }, {
+  	timestamps: false
+  });
+  return Burger;
+};

@@ -1,28 +1,35 @@
-var express = require('express');
-var methodOverride = require('method-override');
-var bodyParser = require('body-parser');
+// Import Dependencies
+var express = require("express");
+var bodyParser = require("body-parser");
+var methodOverride = require("method-override");
 
-var port = process.env.PORT || 3000;
-
+// Initialize express server
 var app = express();
 
-// Serve static content for the app from the "public" directory in the application directory.
-app.use(express.static("public"));
-
-app.use(bodyParser.urlencoded({ extended: false }));
-
-// Override with POST having ?_method=DELETE
+// Body Parser Middleware
 app.use(methodOverride("_method"));
+app.use(bodyParser.urlencoded({ extended: false}));
+app.use(bodyParser.text());
+app.use(bodyParser.json({ type:"application/vnd.api+json"}));
 
-// Set Handlebars.
+// View Template
 var exphbs = require("express-handlebars");
+app.use(express.static(__dirname + "/public"));
+app.engine("handlebars", exphbs({defaultLayout: "main"}));
+app.set("view engine", "handlebars");	
 
-app.engine("handlebars", exphbs({ defaultLayout: "main" }));
-app.set("view engine", "handlebars");
+// Assign port
+var PORT = process.env.PORT || 3000;
 
-// Import routes and give the server access to them.
-var routes = require("./controllers/burgers_controller.js");
+// Set up db
+var db = require("./models");
 
-app.use("/", routes);
+// Require routes
+require("./routes/api-routes.js")(app);
 
-app.listen(port);
+// Sync to db and set app to listen
+db.sequelize.sync({force: true}).then(function() {
+	app.listen(PORT, function(){
+		console.log("App listening on: " + PORT);
+	});
+});

@@ -1,7 +1,7 @@
-<body style="background-image: url('../assets/img/hamburgers.png'); color:#FFF; font-family:'Comic Sans MS'; font-weight:bold; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; padding-left:20px">
-<h1 style="font-size: 72px; font-weight: bolder; text-align: center; margin:0px; padding-bottom:0px">EAT-DA-BURGER</h1>
+<body>
+<h1>EAT-DA-BURGER</h1>
 
-<h3 style="float:left; margin-top:0px; font-weight:bolder">Available Burgers</h3>
+<h3 style="float:left; margin-top:0px">Available Burgers</h3>
 
 <ul style="clear:left">
   {{#each burgers}}
@@ -17,14 +17,14 @@
   {{/each}}
 </ul>
 
-<h3 style="font-weight:bolder">Add a Burger</h3>
+<h3>Add a Burger</h3>
 <form action="/" method="POST" style="padding-left:20px">
 	<textarea type="text" name="burger_name"></textarea>
 
 	<button type="submit">Submit</button>
 </form>
 
-<h3 style="font-weight:bolder">Eaten Burgers</h3>
+<h3>Eaten Burgers</h3>
   {{#each burgers}}
   	{{#if devoured}}
   		<ul>

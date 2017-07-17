@@ -2,14 +2,14 @@
   "development": {
     "username": "root",
     "password": "Thouman1",
-    "database": "sequelizeBurgers_db",
+    "database": "sequelizedBurger",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
     "password": "Thouman1",
-    "database": "sequelizeBurgers_db",
+    "database": "sequelizedBurger",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },

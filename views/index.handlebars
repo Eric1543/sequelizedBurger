@@ -8,7 +8,7 @@
   	{{#unless devoured}}
 	  	<li>
 	       <p>Burger {{this.id}}: {{this.burger_name}} &nbsp;
-	       		<form action="/{{this.id}}?_method=PUT" method="POST">
+	       		<form action="/{{this.id}}" method="POST">
 	       			<button id="{{this.id}}">Click to Eat</button>
 	       		</form>
 	       </p>
@@ -19,7 +19,7 @@
 
 <h3>Add a Burger</h3>
 <form action="/" method="POST" style="padding-left:20px">
-	<textarea type="text" name="burger_name"></textarea>
+	<textarea type="text" name="burger_name" style="color:#000"></textarea>
 
 	<button type="submit">Submit</button>
 </form>
